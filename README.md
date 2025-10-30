@@ -1,25 +1,53 @@
 Sense&Care — Totem Inteligente de Acessibilidade e Inclusão
 
-1 - O Sense&Care é um totem inteligente acessível projetado para transformar espaços físicos em ambientes verdadeiramente inclusivos.
-Integrando voz, toque, LIBRAS, sensores e IA ética, ele oferece uma experiência personalizada, permitindo que qualquer pessoa — com ou sem deficiência — acesse informações e interaja com autonomia.
+1 - Introdução e Justificativa do Problema
+O Sense&Care nasce da necessidade de transformar espaços físicos em ambientes inclusivos e acessíveis, especialmente em locais públicos, culturais e corporativos.
+Pessoas com deficiência visual, auditiva, motora ou múltipla ainda enfrentam barreiras ao buscar informações simples — desde orientações até serviços de atendimento.
 
-Este repositório contém uma simulação completa do funcionamento técnico do totem, desde a coleta de dados sensoriais (MQTT) até o processamento no Edge (FastAPI) e sincronização com a nuvem (mock cloud).
+O projeto propõe uma solução tecnológica humanizada que une voz, toque, LIBRAS e IA ética, garantindo que qualquer pessoa possa interagir com autonomia, privacidade e conforto.
+
+Descrição da Solução:
+O Sense&Care é um totem inteligente de acessibilidade que integra sensores físicos (ESP32), software embarcado (Edge) e uma camada simulada de nuvem.
+Ele detecta presença, ajusta luminosidade, interpreta interações e coleta métricas de uso — sempre com anonimização e privacidade por padrão.
+
+A arquitetura desenvolvida nesta Sprint simula todo o fluxo de dados:
+Coleta sensorial → Processamento no Edge → Sincronização com a nuvem → Dashboards de acessibilidade.
 
 2 - Estrutura do Projeto
+    SENSE-CARE-CHALLENGE/
+    │
+    ├── README.md                            # Documento principal do projeto
+    │
+    ├── /docs                                # Documentação técnica e conceitual
+    │   ├── arquitetura.drawio               # Diagrama integrado (link para os outros 3)
+    │   ├── escopo.md                        # Definição do problema e proposta
+    │   ├── coleta_dados.md                  # Estratégia de coleta, simulação e privacidade
+    │   ├── plano_desenvolvimento.md         # LGPD + cronograma + papéis
+    │   └── tecnologias.md                   # Linguagens, frameworks e serviços
+    │
+    ├── /simulacao                           # Scripts e simulações do Sense&Care
+    │   ├── /app
+    │   │   ├── app.py
+    │   │   ├── queue.db
+    │   │   ├── queue.db-shm
+    │   │   ├── queue.db-wal
+    │   │   └── requirements.txt
+    │   │
+    │   ├── /sims
+    │   │   ├── mqtt_publisher.py
+    │   │   ├── sessions_generator.py
+    │   │
+    │   ├── /tools
+    │   │   ├── mock_cloud.py
+    │   │   └── sync_stub.py
+    │   │
+    │   └── .env
+    │
+    └── /diagramas                          
+        ├── diag_sensecare_cloud_pipeline.png
+        ├── diag_sensecare_hardware.png
+        └── diag_sensecare_software_edge.png
 
-    simulacao/
-    ├── app/              # Edge backend (FastAPI + SQLite + MQTT)
-    │   ├── app.py
-    │   ├── queue.db
-    │   └── requirements.txt
-    │
-    ├── sims/             # Simuladores (sensores, sessões)
-    │   ├── mqtt_publisher.py
-    │   └── sessions_generator.py
-    │
-    └── tools/            # Ferramentas auxiliares
-        ├── sync_stub.py
-        └── mock_cloud.py
 
 
 3 - O que está sendo simulado:
@@ -78,12 +106,48 @@ Siga a ordem abaixo no Powershell para reproduzir toda a simulação (funciona e
     - SQLite — armazenamento local dos eventos
     - Docker (Mosquitto) — broker MQTT local
 
-6 - Política de Privacidade
+6 - Arquitetura (com Diagramas)
+Os diagramas completos estão na pasta /diagramas/:
+    Hardware Edge – sensores e ESP32 (diag_sensecare_hardware.png)
+    Software Edge – processamento local e fila (diag_sensecare_software_edge.png)
+    Cloud Pipeline – fluxo até dashboards e relatórios (diag_sensecare_cloud_pipeline.png)
 
-O sistema não coleta nenhum dado pessoal identificável.
-Todos os eventos são anônimos e usados apenas para métricas de acessibilidade e desempenho.
+Fluxo resumido:
+    Sensores → MQTT Broker → FastAPI (Edge) → SQLite Queue → Sync Stub → Mock Cloud → Dashboards
 
-7 - Autora
+7 - Estratégia de Coleta e Segurança
+    Nenhum dado pessoal é armazenado.
+    IDs são pseudonimizados e rotativos (session_id).
+    Eventos: presence_detected, ambient_lux, button_pressed, interaction_started, etc.
+    Dados trafegam via TLS e são mantidos localmente apenas até sincronização.
+    Retenção:
+        events → 12 meses
+        aggregates → 24 meses
+        logs locais → 90 dias
+    Conformidade com LGPD e princípios de privacidade por design.
+
+8 - Plano de Desenvolvimento
+    Sprint 1 – Simulação e arquitetura local (Edge)
+        Estruturação dos módulos app/, sims/, tools/
+        Criação da fila SQLite e simulação de eventos
+    Sprint 2 – Integração com nuvem mock
+        Implementar sincronização e mock de armazenamento remoto
+    Sprint 3 – Dashboards e análise de dados simulados
+        KPIs de acessibilidade e métricas de uso
+    Sprint 4 – Testes, documentação e refinamento de IA leve
+        Detecção de padrões e insights éticos de interação
+
+9 - Equipe e Responsabilidades
+Integrante	                                        Função	                                        Principais Atividades
+Giovana de Oliveira Agudo	                        QA / Arquiteta de desenvolvimento     	        Estrutura do Edge, fila SQLite, testes, roteiros e documentação
+Giovana de Oliveira Agudo	                        Colaboração técnica	                            Revisão, validação de arquitetura e ajustes de ambiente
+
+
+
+10 - Política de Privacidade
+O sistema não coleta nenhum dado pessoal identificável. Todos os eventos são anônimos e usados apenas para métricas de acessibilidade e desempenho.
+
+11 - Autora
 Giovana de Oliveira Agudo
 Projeto acadêmico desenvolvido no Challenge FlexMedia — FIAP 2025,
 Sprint 1: Prototipação de Arquitetura e Estratégia de Dados Simulada,
