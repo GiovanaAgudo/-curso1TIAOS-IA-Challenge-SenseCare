@@ -4,6 +4,7 @@
 
 <details>
 <summary>Sprint 1</summary>
+
 ## 1 - Introdução e Justificativa do Problema
 O Sense&Care nasce da necessidade de transformar espaços físicos em ambientes inclusivos e acessíveis, especialmente em locais públicos, culturais e corporativos.
 Pessoas com deficiência visual, auditiva, motora ou múltipla ainda enfrentam barreiras ao buscar informações simples — desde orientações até serviços de atendimento.
