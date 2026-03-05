@@ -282,11 +282,10 @@ Durante o desenvolvimento do projeto, algumas decisões técnicas foram tomadas 
 
 </details>
 
-##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
-## Autora
+
+# Autora
 Giovana de Oliveira Agudo
 Projeto acadêmico desenvolvido no Challenge FlexMedia — FIAP 2026,
 Sprint 1: Prototipação de Arquitetura e Estratégia de Dados Simulada.
 Sprint 2: Integração com BD e análises estatísticas
 Sprint 3: Avançar na integração de todos os módulos, garantindo que o sistema funcione de forma estável, organizada e analisável.
-##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
