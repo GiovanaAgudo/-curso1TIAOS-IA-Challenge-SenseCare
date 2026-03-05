@@ -160,18 +160,11 @@ Giovana de Oliveira Agudo	                        Colaboração técnica	       
 ## 10 - Política de Privacidade
 O sistema não coleta nenhum dado pessoal identificável. Todos os eventos são anônimos e usados apenas para métricas de acessibilidade e desempenho.
 
-## 11 - Autora
-Giovana de Oliveira Agudo
-Projeto acadêmico desenvolvido no Challenge FlexMedia — FIAP 2025,
-Sprint 1: Prototipação de Arquitetura e Estratégia de Dados Simulada,
-
-##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
-
 ## Sprint 2
 ## Integração, ETL e Dashboard
 Nesta Sprint, o projeto evoluiu para integrar sensores, armazenamento local, sincronização simulada em cloud e análise completa de uso do Totem Sense&Care.
 
-## Principais Entregáveis
+## 11 - Principais Entregáveis
     - Simulação realista de sessões e eventos (toque, voz, acessibilidade, conteúdo).
     - Banco local SQLite operando como fila de eventos.
     - Pipeline de sincronização entre edge e cloud mock.
@@ -182,7 +175,7 @@ Nesta Sprint, o projeto evoluiu para integrar sensores, armazenamento local, sin
         dashboard.ipynb
         dashboard_app.py (Streamlit)
 
-## Métricas Monitoradas
+## 12 - Métricas Monitoradas
     - CSAT médio
     - Tempo de permanência
     - Conteúdos mais acessados
@@ -190,7 +183,7 @@ Nesta Sprint, o projeto evoluiu para integrar sensores, armazenamento local, sin
     - Sessões por canal
     - Relação dwell × satisfação
 
-## Como Executar
+## 13 - Como Executar
 1. Rodar simulação
     python sims/sessions_generator.py
     python sims/mqtt_publisher.py
@@ -204,3 +197,78 @@ Nesta Sprint, o projeto evoluiu para integrar sensores, armazenamento local, sin
 4. Rodar dashboard web (terminal -> cd analysis)
     streamlit run analysis/dashboard_app.py
 
+## Sprint 3
+## 14 - Arquitetura Consolidada do Sistema
+O projeto Sense&Care foi desenvolvido como um sistema distribuído que integra sensores, processamento local (Edge Computing), armazenamento de dados, análise estatística e visualização interativa de métricas de uso.
+
+A arquitetura final do sistema é composta pelos seguintes componentes:
+
+- **Sensores / Simulação de Interação**  
+  Simuladores geram eventos de interação representando toques, comandos ou acessos ao totem.
+
+- **MQTT Broker**  
+  Atua como intermediário para comunicação assíncrona entre sensores e o sistema de ingestão.
+
+- **Edge API (FastAPI)**  
+  Responsável por receber eventos via HTTP ou MQTT, validar os dados e registrá-los no banco local.
+
+- **Banco de Dados Local (SQLite)**  
+  Armazena temporariamente eventos e sessões geradas durante o uso do sistema.
+
+- **Pipeline de ETL**  
+  Processa os dados brutos coletados, estruturando-os em datasets analíticos.
+
+- **Análise Estatística e Machine Learning**  
+  Utiliza Python e bibliotecas como scikit-learn para treinar modelos de classificação e avaliar padrões de interação.
+
+- **Dashboard Interativo (Streamlit)**  
+  Permite visualizar métricas, padrões temporais, picos de uso e comportamento dos usuários.
+
+---
+
+## 15 - Fluxo Final de Dados
+O fluxo completo de dados do sistema segue o seguinte pipeline:
+    Sensores / Simulação de eventos ->
+    MQTT Broker ->
+    FastAPI Edge Service ->
+    SQLite (registro de eventos) ->
+    Pipeline ETL (transformação dos dados) ->
+    Datasets analíticos (CSV) ->
+    Análises estatísticas e Machine Learning ->
+    Dashboard interativo (Streamlit) ->
+
+Esse fluxo permite que o sistema capture interações em tempo real, armazene dados estruturados e gere análises que apoiam decisões baseadas em dados.
+
+---
+
+## 16 - Decisões Técnicas Adotadas
+
+Durante o desenvolvimento do projeto, algumas decisões técnicas foram tomadas para garantir simplicidade, escalabilidade e facilidade de reprodução do ambiente.
+
+- **Uso de FastAPI para Edge Service**  
+  FastAPI foi escolhido por sua alta performance e facilidade para criação de APIs assíncronas.
+
+- **Uso de SQLite para armazenamento local**  
+  SQLite permite um banco leve e portátil para ambientes de prototipagem e simulação.
+
+- **Uso de MQTT para comunicação de eventos**  
+  MQTT é amplamente utilizado em arquiteturas IoT e permite comunicação eficiente entre sensores e serviços.
+
+- **Uso de Streamlit para visualização**  
+  Streamlit foi adotado para permitir a construção rápida de dashboards interativos para análise de dados.
+
+- **Uso de scikit-learn para Machine Learning**  
+  A biblioteca foi utilizada para implementação de modelos supervisionados de classificação, permitindo avaliar padrões de interação com métricas como Accuracy e    F1-score.
+
+- **Privacidade e segurança de dados**  
+  O sistema foi projetado seguindo princípios de privacy-by-design, utilizando identificadores pseudonimizados e evitando o armazenamento de dados pessoais.
+
+
+##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
+## Autora
+Giovana de Oliveira Agudo
+Projeto acadêmico desenvolvido no Challenge FlexMedia — FIAP 2026,
+Sprint 1: Prototipação de Arquitetura e Estratégia de Dados Simulada.
+Sprint 2: Integração com BD e análises estatísticas
+Sprint 3: Avançar na integração de todos os módulos, garantindo que o sistema funcione de forma estável, organizada e analisável.
+##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
