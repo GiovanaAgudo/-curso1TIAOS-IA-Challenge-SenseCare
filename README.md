@@ -1,8 +1,6 @@
 #               Sense&Care
 # Totem Inteligente de Acessibilidade e Inclusão
 
-----
-
 <details>
 <summary>Sprint 1</summary>
 
