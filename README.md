@@ -1,6 +1,9 @@
-## Sense&Care — Totem Inteligente de Acessibilidade e Inclusão
+# Sense&Care — Totem Inteligente de Acessibilidade e Inclusão
 
-## Sprint 1
+----
+
+<details>
+<summary>Sprint 1</summary>
 ## 1 - Introdução e Justificativa do Problema
 O Sense&Care nasce da necessidade de transformar espaços físicos em ambientes inclusivos e acessíveis, especialmente em locais públicos, culturais e corporativos.
 Pessoas com deficiência visual, auditiva, motora ou múltipla ainda enfrentam barreiras ao buscar informações simples — desde orientações até serviços de atendimento.
@@ -54,11 +57,14 @@ Coleta sensorial → Processamento no Edge → Sincronização com a nuvem → D
 ----
 
 ## 3 - O que está sendo simulado:
-Camada	                                Descrição
-Edge (app.py)	                        Recebe dados de sensores e interações, salva em SQLite e expõe APIs HTTP/WebSocket.
-Simuladores (sims/)	                    Publicam eventos via MQTT e HTTP, representando sensores e interações humanas.
-Sync Stub (tools/sync_stub.py)	        Envia os eventos coletados no Edge para um mock de nuvem ou arquivo local.
-Mock Cloud (tools/mock_cloud.py)	    API FastAPI simples que simula o backend da nuvem, recebendo eventos e exibindo logs.   
+	                                
+| Camada | Descrição |
+|------|------|
+| Edge (app.py) | Recebe dados de sensores e interações, salva em SQLite e expõe APIs HTTP/WebSocket. |
+| Simuladores (sims/) | Publicam eventos via MQTT e HTTP, representando sensores e interações humanas. |
+| Sync Stub (tools/sync_stub.py) | Envia os eventos coletados no Edge para um mock de nuvem ou arquivo local. |
+| Mock Cloud (tools/mock_cloud.py) | API FastAPI simples que simula o backend da nuvem, recebendo eventos e exibindo logs. |
+
 
 ----
 
@@ -125,6 +131,7 @@ Fluxo resumido:
 ----
 
 ## 7 - Estratégia de Coleta e Segurança
+    > ⚠️ Importante
     Nenhum dado pessoal é armazenado.
     IDs são pseudonimizados e rotativos (session_id).
     Eventos: presence_detected, ambient_lux, button_pressed, interaction_started, etc.
@@ -160,7 +167,11 @@ Giovana de Oliveira Agudo	                        Colaboração técnica	       
 ## 10 - Política de Privacidade
 O sistema não coleta nenhum dado pessoal identificável. Todos os eventos são anônimos e usados apenas para métricas de acessibilidade e desempenho.
 
-## Sprint 2
+</details>
+
+
+
+#### Sprint 2
 ## Integração, ETL e Dashboard
 Nesta Sprint, o projeto evoluiu para integrar sensores, armazenamento local, sincronização simulada em cloud e análise completa de uso do Totem Sense&Care.
 
@@ -197,7 +208,7 @@ Nesta Sprint, o projeto evoluiu para integrar sensores, armazenamento local, sin
 4. Rodar dashboard web (terminal -> cd analysis)
     streamlit run analysis/dashboard_app.py
 
-## Sprint 3
+#### Sprint 3
 ## 14 - Arquitetura Consolidada do Sistema
 O projeto Sense&Care foi desenvolvido como um sistema distribuído que integra sensores, processamento local (Edge Computing), armazenamento de dados, análise estatística e visualização interativa de métricas de uso.
 
@@ -264,11 +275,11 @@ Durante o desenvolvimento do projeto, algumas decisões técnicas foram tomadas 
   O sistema foi projetado seguindo princípios de privacy-by-design, utilizando identificadores pseudonimizados e evitando o armazenamento de dados pessoais.
 
 
-##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
+##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
 ## Autora
 Giovana de Oliveira Agudo
 Projeto acadêmico desenvolvido no Challenge FlexMedia — FIAP 2026,
 Sprint 1: Prototipação de Arquitetura e Estratégia de Dados Simulada.
 Sprint 2: Integração com BD e análises estatísticas
 Sprint 3: Avançar na integração de todos os módulos, garantindo que o sistema funcione de forma estável, organizada e analisável.
-##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
+##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
