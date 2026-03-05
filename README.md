@@ -1,4 +1,4 @@
-# Sense&Care             Totem Inteligente de Acessibilidade e Inclusão
+# Sense&Care - Totem Inteligente de Acessibilidade e Inclusão
 
 <details>
 <summary>Sprint 1</summary>
@@ -169,8 +169,10 @@ O sistema não coleta nenhum dado pessoal identificável. Todos os eventos são 
 </details>
 
 
+<details>
+<summary>Sprint 2</summary>
 
-#### Sprint 2
+
 ## Integração, ETL e Dashboard
 Nesta Sprint, o projeto evoluiu para integrar sensores, armazenamento local, sincronização simulada em cloud e análise completa de uso do Totem Sense&Care.
 
@@ -207,7 +209,12 @@ Nesta Sprint, o projeto evoluiu para integrar sensores, armazenamento local, sin
 4. Rodar dashboard web (terminal -> cd analysis)
     streamlit run analysis/dashboard_app.py
 
-#### Sprint 3
+
+</details>
+
+<details>
+<summary>Sprint 3</summary>
+
 ## 14 - Arquitetura Consolidada do Sistema
 O projeto Sense&Care foi desenvolvido como um sistema distribuído que integra sensores, processamento local (Edge Computing), armazenamento de dados, análise estatística e visualização interativa de métricas de uso.
 
@@ -273,6 +280,7 @@ Durante o desenvolvimento do projeto, algumas decisões técnicas foram tomadas 
 - **Privacidade e segurança de dados**  
   O sistema foi projetado seguindo princípios de privacy-by-design, utilizando identificadores pseudonimizados e evitando o armazenamento de dados pessoais.
 
+</details>
 
 ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
 ## Autora
