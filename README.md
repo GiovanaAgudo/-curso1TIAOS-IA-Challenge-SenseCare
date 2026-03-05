@@ -1,4 +1,5 @@
-# Sense&Care — Totem Inteligente de Acessibilidade e Inclusão
+#               Sense&Care
+# Totem Inteligente de Acessibilidade e Inclusão
 
 ----
 
